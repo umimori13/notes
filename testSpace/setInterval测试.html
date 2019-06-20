@@ -1,0 +1,38 @@
+<html>
+<body >
+
+<input type="text" id="clock" size="35" />
+<script language=javascript>
+let count = 1;
+let getTime = window.performance;
+let startTime = getTime.now();
+var nowtime = getTime.now();
+function sleep(time) {
+  let startTime = window.performance.now();
+  while (window.performance.now() - startTime < time) {}
+}
+
+var x = setInterval(function () {
+  console.log(`第${count}次开始 ${getTime.now() - startTime}`); // 显示开始时间
+  sleep(500); // 程序滞留500ms
+  console.log(`第${count}次结束 ${getTime.now() - startTime}`); // 显示结束时间
+  count += 1;
+  if (count===5){
+      clearInterval(x)
+      y = false
+    //   console.log(`第${count}次结束 ${getTime.now() - nowtime}`); // 显示结束时间
+
+  }
+}, 300); // 300ms间隔
+var out = setTimeout(() => {
+    clearInterval(x)
+    console.log(count)
+    console.log(`第${count}次timout时间 ${getTime.now() - startTime}`); 
+}, 1400);
+</script>
+</form>
+<!-- <button onclick="int=window.clearInterval(int)">
+Stop interval</button> -->
+
+</body>
+</html>
