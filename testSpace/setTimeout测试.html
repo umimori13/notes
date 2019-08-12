@@ -1,0 +1,92 @@
+<html>
+<body>
+
+<!-- <a href="test6.html" prop="qwq">W3School</a> -->
+<!-- <input type="text" id="clock" size="35" /> -->
+<script language=javascript>
+    var div = document.createElement("div")
+    document.body.appendChild(div)
+    div.innerHTML = "qwq"
+    div.innerHTML = "<br>qwq</br>"
+// console.log(text.nodeValue)
+// document.body.appendChild(text)
+// var b = 15
+// function x(a){
+//     a = 10
+// }
+// x(b)
+// b = setInterval(()=>{console.log("qwq")},1000)
+
+// console.log(b)
+// var a = new Object()
+// var b = new Object()
+// a.nx = 10
+// b.nx = 5
+
+// function getRandomInt(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
+// }
+// setInterval(()=>{
+//     var out = a
+//     setTimeout(() => {
+//         var c =out
+//         console.log("in time",c)
+//     }, 10);
+//     out = b
+// },2000)
+
+// var a = setTimeout(function(){
+//     console.log("qwq")
+//     return
+//     var b = setTimeout(arguments.callee,200)
+//     console.log(a,b)
+// }, 200);
+// console.log(a,b);
+
+// (function (qwq) {
+//     qwq = 2
+//     setTimeout(()=>{
+//     qwq+=1
+//     console.log(qwq)
+//     setTimeout(arguments.callee,200)
+//     qwq = 8
+// }, 200);
+// } (20));
+
+
+// // 这是一个自执行的函数，函数内部执行自身，递归
+// function foo() { foo(); }
+
+// // 这是一个自执行的匿名函数，因为没有标示名称
+// // 必须使用arguments.callee属性来执行自己
+// var foo = function () { arguments.callee(); };
+
+// // 这可能也是一个自执行的匿名函数，仅仅是foo标示名称引用它自身
+// // 如果你将foo改变成其它的，你将得到一个used-to-self-execute匿名函数
+// var foo = function () { foo(); };
+
+// // 有些人叫这个是自执行的匿名函数（即便它不是），因为它没有调用自身，它只是立即执行而已。
+// (function () { /* code */ } ());
+
+// // 为函数表达式添加一个标示名称，可以方便Debug
+// // 但一定命名了，这个函数就不再是匿名的了
+// (function foo() { /* code */ } ());
+
+// // 立即调用的函数表达式（IIFE）也可以自执行，不过可能不常用罢了
+// (function () { arguments.callee(); } ());
+// (function foo() { foo(); } ());
+
+// // 另外，下面的代码在黑莓5里执行会出错，因为在一个命名的函数表达式里，他的名称是undefined
+// // 呵呵，奇怪
+// (function foo() { foo(); } ());
+// https://www.cnblogs.com/jiangshichao/p/7152855.html
+
+</script>
+<!-- </form> -->
+<!-- <button onclick="int=window.clearInterval(int)">
+Stop interval</button> -->
+
+</body>
+</html>
