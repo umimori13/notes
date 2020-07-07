@@ -34,11 +34,7 @@ camera等属性都能更改，但是需要updateProjectionMatrix()
     edges = new THREE.EdgesHelper( mesh, 0x1535f7 );//设置边框，可以旋转
 
     scene.add( edges );
---------------------- 
-作者：la_啦 
-来源：CSDN 
-原文：https://blog.csdn.net/u011011025/article/details/50723417 
-版权声明：本文为博主原创文章，转载请附上博文链接！
+
 
 注意一个设置
 canvas { width: 100%; height: 100%;display: block;  }
@@ -46,3 +42,16 @@ canvas { width: 100%; height: 100%;display: block;  }
 因此这条要进行改动以消去滑动条
 
 vector,matrix有些操作是会影响到原来的值，一定要注意嗷
+
+
+
+BufferGeometry 会缓存网格模型，性能要高效点。网格模型生成原理
+
+1、Geometry 生成的模型是这样的 （代码）-> (CUP 进行数据处理，转化成虚拟3D数据) -> (GPU 进行数据组装，转化成像素点，准备渲染) -> 显示器
+第二次操作时重复走这些流程。
+
+2、BufferGeometry 生成模型流程 (代码) -> (CUP 进行数据处理，转化成虚拟3D数据) -> (GPU 进行数据组装，转化成像素点，准备渲染) -> (丢入缓存区) -> 显示器
+第二次修改时，通过API直接修改缓存区数据，流程就变成了这样
+(代码) -> (CUP 进行数据处理，转化成虚拟3D数据) -> (修改缓存区数据) -> 显示器
+
+节约了GPU性能的运算性能
