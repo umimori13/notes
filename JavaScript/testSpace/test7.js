@@ -17,7 +17,15 @@
 // a.co = "x"
 // console.log(a.co)
 
-for (let i=0;i<2;i++){
+// for (let i=0;i<2;i++){
 
-}
-console.log(i)
+// }
+// console.log(i)
+
+// var a = function (){
+//     console.log('"qq" :>> ', "qq");
+// }
+// a ? a() : null
+const arr = [1, 2]
+const [a, b] = arr
+console.log('a,b :>> ', a, b)

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <canvas
+            width="900"
+            height="500"
+            id="canvas"
+            style="border: 1px solid black;"
+            >请更新浏览器版本</canvas
+        >
+
+        <script>
+            var canvas = document.getElementById('canvas')
+            var cxt = canvas.getContext('2d')
+            var flag = false
+            cxt.lineWidth = 20
+            canvas.οnmοusedοwn = function (evt) {
+                //alert(evt.pageX);
+                //alert(this.offsetLeft);
+
+                var startX = evt.clientX - this.offsetLeft
+                var startY = evt.clientY - this.offsetTop
+                cxt.beginPath()
+                cxt.moveTo(startX, startY)
+                flag = true
+            }
+
+            canvas.οnmοusemοve = function (evt) {
+                if (flag) {
+                    var endX = evt.clientX - this.offsetLeft
+                    var endY = evt.clientY - this.offsetTop
+
+                    cxt.lineTo(endX, endY)
+                    cxt.stroke()
+                }
+            }
+
+            canvas.οnmοuseup = function () {
+                flag = false
+            }
+            canvas.οnmοuseοut = function () {
+                flag = false
+            }
+        </script>
+    </body>
+</html>
