@@ -1,1 +1,5 @@
 /JavaScript/threejs/node_modules
+node_modules/
+build/
+cloud/
+pointcloud/
