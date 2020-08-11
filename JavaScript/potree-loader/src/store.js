@@ -1,5 +1,6 @@
 const store = {
     viewer: null,
-    pointclouds:[],
+    pointclouds: [],
+    clipBoxes: [],
 }
 export default store

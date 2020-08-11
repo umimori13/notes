@@ -1,7 +1,12 @@
+#extension GL_EXT_frag_depth : enable
+
 // 
 // adapted from the EDL shader code from Christian Boucheny in cloud compare:
 // https://github.com/cloudcompare/trunk/tree/master/plugins/qEDL/shaders/EDL
 //
+
+precision mediump float;
+precision mediump int;
 
 uniform float screenWidth;
 uniform float screenHeight;
@@ -10,7 +15,13 @@ uniform float edlStrength;
 uniform float radius;
 uniform float opacity;
 
-uniform sampler2D colorMap;
+uniform float uNear;
+uniform float uFar;
+
+uniform mat4 uProj;
+
+uniform sampler2D uEDLColor;
+uniform sampler2D uEDLDepth;
 
 varying vec2 vUv;
 
@@ -22,7 +33,8 @@ float response(float depth){
 	for(int i = 0; i < NEIGHBOUR_COUNT; i++){
 		vec2 uvNeighbor = vUv + uvRadius * neighbours[i];
 		
-		float neighbourDepth = texture2D(colorMap, uvNeighbor).a;
+		float neighbourDepth = texture2D(uEDLColor, uvNeighbor).a;
+		neighbourDepth = (neighbourDepth == 1.0) ? 0.0 : neighbourDepth;
 
 		if(neighbourDepth != 0.0){
 			if(depth == 0.0){
@@ -37,16 +49,19 @@ float response(float depth){
 }
 
 void main(){
-	vec4 color = texture2D(colorMap, vUv);
+	vec4 color = texture2D(uEDLColor, vUv);
 	
 	float depth = color.a;
 	float res = response(depth);
 	float shade = exp(-res * 300.0 * edlStrength);
 	
-	if(color.a == 0.0 && res == 0.0){
-		discard;
-	}else{
-		gl_FragColor = vec4(color.rgb * shade, opacity);
-	}
-	
+    gl_FragColor = vec4(color.rgb * shade, opacity);
+    // gl_FragColor = vec4(res*5.0+0.5, res*5.0+0.5, res*5.0+0.5, 1.0);
+        
+	// if(color.a == 0.0 && res == 0.0){
+	// 	// discard;
+	// }else{
+	// 	gl_FragColor = vec4(color.rgb * shade, opacity);
+	// }
+
 }

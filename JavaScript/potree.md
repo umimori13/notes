@@ -6,6 +6,7 @@ xy 轴似乎不对（与正常 potree 不一致 ）
 
 potree-loader
 没有 EDL 渲染功能
+有选择鼠标到点的功能
 
 potree 问题:
 potree 的 camera 操控主要为球形 pitch 和 yaw 进行操控

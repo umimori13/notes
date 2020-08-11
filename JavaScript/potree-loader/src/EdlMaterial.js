@@ -8,8 +8,9 @@
 // https://tel.archives-ouvertes.fr/tel-00438464/document p. 115+ (french)
 import edlFrag from './edl.frag'
 import edlVert from './edl.vert'
+import { RawShaderMaterial } from 'three'
 
-export class EyeDomeLightingMaterial extends THREE.RawShaderMaterial {
+export class EyeDomeLightingMaterial extends RawShaderMaterial {
     constructor(parameters = {}) {
         super()
 
@@ -36,6 +37,7 @@ export class EyeDomeLightingMaterial extends THREE.RawShaderMaterial {
         })
 
         this.neighbourCount = 8
+        console.log('shader :>> \n', this.getDefines() + edlVert)
     }
 
     getDefines() {
@@ -47,8 +49,8 @@ export class EyeDomeLightingMaterial extends THREE.RawShaderMaterial {
     }
 
     updateShaderSource() {
-        let vs = this.getDefines() + require('./edl.vert')
-        let fs = this.getDefines() + require('./edl.frag')
+        let vs = this.getDefines() + edlVert
+        let fs = this.getDefines() + edlFrag
 
         this.setValues({
             vertexShader: vs,
@@ -76,6 +78,7 @@ export class EyeDomeLightingMaterial extends THREE.RawShaderMaterial {
                     (2 * c * Math.PI) / this._neighbourCount
                 )
             }
+            console.log('this.neighbours :>> ', this.neighbours)
 
             this.updateShaderSource()
         }
