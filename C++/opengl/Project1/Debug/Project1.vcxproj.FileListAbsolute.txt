@@ -1,4 +1,0 @@
-F:\opengl\Project1\Debug\Project1.exe
-F:\opengl\Project1\Debug\Project1.pdb
-F:\teamwork\notes\C++\opengl\Project1\Debug\Project1.exe
-F:\teamwork\notes\C++\opengl\Project1\Debug\Project1.pdb
