@@ -56,3 +56,8 @@ BufferGeometry 会缓存网格模型，性能要高效点。网格模型生成�
 节约了 GPU 性能的运算性能
 
 three-full 目前是 r113 版本，当前 three.js 是 r119 版本（20200731），容易出错，因此不建议使用
+
+# texture 加载阻塞
+
+可通过 WebGlRenderer.initTexture(:texture)来让该 texture 提前阻塞渲染
+也可通过 ImageBitmap 来提供一个 worker 进行 image decode

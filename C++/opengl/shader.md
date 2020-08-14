@@ -58,3 +58,9 @@ glGetUniformLocation(shaderProgram, "ourColor");
     int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
     glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 ```
+
+# tips
+
+---
+
+着色器中获取到每个变量似乎是通过 location 位置值来获得的，同样也有通过变量名去寻找对应的位置值，并通过向这个通道的变量提供数据进行渲染
