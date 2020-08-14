@@ -17,6 +17,7 @@ import { TransformControls } from 'three/examples/jsm/controls/TransformControls
 import * as dat from 'dat.gui'
 import { EyeDomeLightingMaterial } from './EdlMaterial'
 import EdlRenderer from './edlRenderer'
+import { PanoramaControls } from './PanoramaControls'
 
 let isUseEdl = true
 
@@ -30,7 +31,6 @@ const screenPass = new (function () {
     this.screenQuad.material.transparent = true
     this.screenScene.add(this.screenQuad)
     this.camera = new THREE.Camera()
-    console.log('this.camera :>> ', this.camera)
 
     this.render = function (renderer, material, camera, target) {
         this.screenQuad.material = material
@@ -72,7 +72,9 @@ const init = () => {
         scene,
         renderer,
     }
-    const controls = new OrbitControls(camera, renderer.domElement)
+    var clock = new THREE.Clock()
+    // const controls = new OrbitControls(camera, renderer.domElement)
+    const controls = new PanoramaControls(camera, renderer.domElement)
 
     const transformControl = new TransformControls(camera, renderer.domElement)
     transformControl.addEventListener('dragging-changed', function (event) {
@@ -426,7 +428,7 @@ const init = () => {
         // based on the camera frustum and it triggers any loads/unloads which are necessary to keep the
         // number of visible points in check.
         potree.updatePointClouds(pointClouds, camera, renderer)
-        controls.update()
+        controls.update(clock.getDelta())
         // console.log('time :>> ', curTime)
 
         // if (t - lastTime > 1000) {

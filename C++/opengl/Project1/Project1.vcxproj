@@ -72,8 +72,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <ReferencePath>F:\opengl\Project1\includes;$(ReferencePath)</ReferencePath>
-    <LibraryPath>F:\opengl\Project1\libs;$(LibraryPath)</LibraryPath>
+    <ReferencePath>F:\teamwork\notes\C++\opengl\Project1\includes;$(ReferencePath)</ReferencePath>
+    <LibraryPath>F:\teamwork\notes\C++\opengl\Project1\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\teamwork\notes\C++\opengl\Project1\includes;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -90,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\opengl\Project1\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\teamwork\notes\C++\opengl\Project1\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
