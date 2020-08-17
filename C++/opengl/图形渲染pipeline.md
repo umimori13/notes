@@ -1,6 +1,6 @@
 # 图形渲染 Pipeline
 
-![pipeline](./pipeline.png)
+![pipeline](./pictures/pipeline.png)
 
 蓝色为可自定义，灰色不可自定义，整个过程都会在 GPU 中进行
 
@@ -36,6 +36,6 @@ gl_Position 就是将要输出的结果，是一个 vec4（x,y,z,w)的向量
 
 ## 处理顶点数据
 
-![vertex](./vertex_array_objects_ebo.png)
+![vertex](./pictures/vertex_array_objects_ebo.png)
 
 源数据可能被多次使用，因此通过 VAO 的方式进行缓存。VAO 中的数据可能将会被复用，为减少数据量，因此通过 EBO 来使得通过 index 调用的方式重复使用源数据，数据将会传给 VBO 提供给实际将要进行绘制的节点，并依靠对应的步长，偏移，等方式去决定如何绘制

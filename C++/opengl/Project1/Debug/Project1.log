@@ -1,4 +1,4 @@
 ﻿  源.cpp
-F:\teamwork\notes\C++\opengl\Project1\includes\learnopengl\shader_s.h(41,40): warning C4101: “e”: 未引用的局部变量
+F:\teamwork\notes\C++\opengl\Project1\includes\learnopengl\shader_m.h(55,40): warning C4101: “e”: 未引用的局部变量
 LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
   Project1.vcxproj -> F:\teamwork\notes\C++\opengl\Project1\Debug\Project1.exe
