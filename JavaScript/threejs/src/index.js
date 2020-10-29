@@ -4,7 +4,9 @@
 //     0.,2065.79959761,1010.20804299,
 //     0., 0.,1. ],3840,2160,0.5
 
-const { default: init } = require("./exampleThree");
+// const { default: init } = require("./exampleThree");
 
-// )); 
-init()
+// ));
+// init()
+import basicExample from './basicExample'
+basicExample()

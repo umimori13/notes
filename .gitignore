@@ -5,3 +5,11 @@ cloud/
 pointcloud/
 debug/
 .vs/
+includes/
+pointcloud.*
+pointcloud/
+Debug/
+*.ply
+*.obj
+*.mtl
+*.glb

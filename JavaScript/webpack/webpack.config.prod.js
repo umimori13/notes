@@ -91,8 +91,6 @@ module.exports = {
                 '!libs',
                 '!pointclouds',
                 '!pointclouds/**/*',
-                '!projectId',
-                '!projectId/**/*',
             ],
         }),
         new MiniCssExtractPlugin({
@@ -108,7 +106,7 @@ module.exports = {
                 {
                     from: 'public/',
                     globOptions: {
-                        ignore: ['**/pointcloud/**', '**/libs/**'],
+                        ignore: ['**/pointclouds/**', '**/libs/**'],
                     },
                 },
             ],

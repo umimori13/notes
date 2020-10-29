@@ -11,13 +11,14 @@ import {
 import { PointCloudOctree, Potree } from '@pnext/three-loader'
 import store from './store'
 import { handleMouseMove, handleMouseDown } from './operation'
-import { OrbitControls } from 'three-full'
+// import { OrbitControls } from 'three-full'
 import * as THREE from 'three'
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls'
 import * as dat from 'dat.gui'
 import { EyeDomeLightingMaterial } from './EdlMaterial'
 import EdlRenderer from './edlRenderer'
 import { PanoramaControls } from './PanoramaControls'
+// import { OrbitControls } from './OrbitControls'
 
 let isUseEdl = true
 
@@ -53,7 +54,7 @@ const init = () => {
         0.01,
         1000
     )
-    camera.position.set(0, 0, 30)
+    camera.position.set(0, 0, 1)
     camera.up.set(0, 0, 1)
     sceneBG.background = new THREE.Color(0x0000ff)
 
@@ -428,12 +429,13 @@ const init = () => {
         // based on the camera frustum and it triggers any loads/unloads which are necessary to keep the
         // number of visible points in check.
         potree.updatePointClouds(pointClouds, camera, renderer)
-        controls.update(clock.getDelta())
+        // controls.update(clock.getDelta())
         // console.log('time :>> ', curTime)
 
         // if (t - lastTime > 1000) {
         //     lastTime = t
-        //     console.log('t :>> ', t)
+        // console.log('t :>> ', t)
+        // console.log('clock.getDelta() :>> ', clock.getDelta())
 
         if (pointClouds.length) {
             const [pco] = pointClouds
