@@ -8,6 +8,10 @@ potree-loader
 没有 EDL 渲染功能
 有选择鼠标到点的功能
 
+---
+
+已经自己通过 three-loader-example 来新增这两个功能了
+
 potree 问题:
 potree 的 camera 操控主要为球形 pitch 和 yaw 进行操控
 主要针对 camera 旋转的 xz 轴操控，不对 y 进行任何修改

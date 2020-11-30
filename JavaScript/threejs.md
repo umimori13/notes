@@ -61,3 +61,9 @@ three-full 目前是 r113 版本，当前 three.js 是 r119 版本（20200731）
 
 可通过 WebGlRenderer.initTexture(:texture)来让该 texture 提前阻塞渲染
 也可通过 ImageBitmap 来提供一个 worker 进行 image decode
+
+# clipping
+
+-   需要在`material`中对`clippingPlanes`属性添加`THREE.Plane()`才能提供切割
+-   这是无限宽的平面,无法设置其宽度
+-   global 切片 需要对`renderer.clippingPlanes`进行设置

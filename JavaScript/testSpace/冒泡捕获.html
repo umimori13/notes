@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <style>
+            #in {
+                width: 50%;
+                height: 50%;
+                background-color: pink;
+            }
+            #out {
+                width: 50%;
+                height: 50%;
+                position: fixed;
+                display: flex;
+                align-items: center; /*垂直居中*/
+                justify-content: center; /*水平居中*/
+                background-color: red;
+            }
+            body {
+                display: flex;
+                align-items: center; /*垂直居中*/
+                justify-content: center; /*水平居中*/
+            }
+        </style>
+    </head>
+    <body>
+        <div id="out">
+            <div id="in2"></div>
+
+            <div id="in"></div>
+        </div>
+        <script>
+            const out = document.getElementById('out')
+            const inn = document.getElementById('in')
+            const inn2 = document.getElementById('in2')
+            window.addEventListener('click', function (e) {
+                console.log('window2')
+            })
+            document.documentElement.addEventListener('click', function (e) {
+                console.log('html2')
+                // e.stopPropagation()
+                e.preventDefault()
+            })
+            document.documentElement.addEventListener('click', function (e) {
+                console.log('html4')
+                // e.stopPropagation()
+                e.preventDefault()
+            })
+            document.body.addEventListener('click', function (e) {
+                console.log('body2')
+                e.preventDefault()
+            })
+            out.addEventListener('click', function (e) {
+                console.log('outer2')
+                e.preventDefault()
+            })
+
+            window.addEventListener(
+                'click',
+                function (e) {
+                    console.log('window1')
+                },
+                true
+            )
+            document.documentElement.addEventListener(
+                'click',
+                function (e) {
+                    console.log('html1')
+                    // e.stopPropagation()
+                    // e.preventDefault()
+                    // e.preventDefault()
+                },
+                true
+            )
+            document.documentElement.addEventListener(
+                'click',
+                function (e) {
+                    console.log('html3')
+                    // e.stopPropagation()
+                    // e.preventDefault()
+                    // e.preventDefault()
+                },
+                true
+            )
+            document.body.addEventListener(
+                'click',
+                function (e) {
+                    console.log('body1')
+                },
+                true
+            )
+
+            inn.addEventListener('click', function (e) {
+                console.log('inner2')
+                e.preventDefault()
+                // e.stopPropagation()
+            })
+            out.addEventListener(
+                'click',
+                function (e) {
+                    console.log('outer1')
+                    // e.stopImmediatePropagation()
+
+                    // e.stopPropagation()
+                },
+                false
+            )
+
+            inn.addEventListener(
+                'click',
+                function (e) {
+                    console.log('inner1')
+                    e.preventDefault()
+                    // e.stopPropagation()
+                    // e.stopImmediatePropagation()
+                },
+                false
+            )
+
+            inn.addEventListener('click', function (e) {
+                console.log('inner4')
+                e.preventDefault()
+            })
+
+            inn.addEventListener(
+                'click',
+                function (e) {
+                    console.log('inner3')
+                    e.preventDefault()
+                },
+                true
+            )
+        </script>
+    </body>
+</html>
