@@ -3,7 +3,17 @@ import { motionBlurShader } from './motionBlurShader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
-import { DepthTexture, Matrix4, Vector3, WebGLRenderTarget } from 'three'
+import {
+    DepthTexture,
+    FloatType,
+    LinearFilter,
+    Matrix4,
+    RGBAFormat,
+    Vector2,
+    Vector3,
+    WebGLRenderTarget,
+} from 'three'
+import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader'
 
 let container
 let camera, scene, renderer
@@ -35,6 +45,7 @@ const initThree = () => {
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     renderer.setPixelRatio(window.devicePixelRatio)
     renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.autoClear = false
     container.appendChild(renderer.domElement)
 
     controls = new OrbitControls(camera, renderer.domElement)
@@ -42,6 +53,26 @@ const initThree = () => {
     window.addEventListener('resize', onWindowResize, false)
 
     // EFFECTS
+    const parameters = {
+        minFilter: LinearFilter,
+        magFilter: LinearFilter,
+        format: RGBAFormat,
+        stencilBuffer: false,
+        type: FloatType, // the defalut is unsignedInternger, so need init outside
+        //  or change it inside
+    }
+
+    const size = renderer.getSize(new Vector2())
+    const _pixelRatio = renderer.getPixelRatio()
+    const _width = size.width
+    const _height = size.height
+
+    const renderTarget = new WebGLRenderTarget(
+        _width * _pixelRatio,
+        _height * _pixelRatio,
+        parameters
+    )
+    renderTarget.texture.name = 'EffectComposer.rt1'
     const composer = new EffectComposer(renderer)
 
     // define a render target with a depthbuffer
@@ -54,6 +85,10 @@ const initThree = () => {
     motionPass.renderToScreen = false
     composer.addPass(motionPass)
 
+    // this is for sRGBEncoding in composer
+    const effect = new ShaderPass(GammaCorrectionShader)
+    composer.addPass(effect)
+
     // define variables used by the motion blur pass
     let previousMatrixWorldInverse = new Matrix4()
     let previousProjectionMatrix = new Matrix4()
@@ -63,6 +98,7 @@ const initThree = () => {
     const render = (timestamp, frame) => {
         // render scene and depthbuffer to the render target
 
+        renderer.clear()
         renderer.setRenderTarget(target)
         renderer.render(scene, camera)
 
