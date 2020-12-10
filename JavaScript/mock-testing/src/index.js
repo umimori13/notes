@@ -1,5 +1,12 @@
-import Axios from 'axios'
+// import clientGet from './client'
+// import clientGet from './client2'
+// import clientGet from './client3'
+import clientGet from './client4'
+import init from './exampleThree'
+import getData from './getData'
 
-Axios.get('http://localhost:3000/news').then((res) =>
-    console.log('res :>> ', res)
-)
+init()
+// const id = setInterval(() => {
+//     getData(id)
+// }, 50)
+clientGet('ws://localhost:9090/')

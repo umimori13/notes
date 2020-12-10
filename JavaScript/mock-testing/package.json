@@ -5,7 +5,8 @@
     "license": "MIT",
     "scripts": {
         "build": "webpack --config webpack.config.prod.js",
-        "start": "webpack-dev-server --config webpack.config.dev.js --hot --open --color"
+        "start": "webpack-dev-server --config webpack.config.dev.js --hot --open --color",
+        "mock": "node ./mock/db.js"
     },
     "devDependencies": {
         "@babel/cli": "^7.10.5",
@@ -30,6 +31,10 @@
         "@babel/runtime": "^7.10.5",
         "axios": "^0.21.0",
         "json-server": "^0.16.3",
-        "mockjs": "^1.1.0"
+        "mockjs": "^1.1.0",
+        "three": "^0.123.0",
+        "websocket": "^1.0.33",
+        "worker-loader": "^3.0.6",
+        "ws": "^7.4.1"
     }
 }
