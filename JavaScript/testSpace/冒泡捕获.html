@@ -32,37 +32,52 @@
             const out = document.getElementById('out')
             const inn = document.getElementById('in')
             const inn2 = document.getElementById('in2')
-            window.addEventListener('click', function (e) {
+            const mousemove = (e) => {
+                e.preventDefault()
+                e.stopPropagation()
+            }
+            window.addEventListener('mousedown', function (e) {
                 console.log('window2')
             })
-            document.documentElement.addEventListener('click', function (e) {
-                console.log('html2')
-                // e.stopPropagation()
-                e.preventDefault()
-            })
-            document.documentElement.addEventListener('click', function (e) {
-                console.log('html4')
-                // e.stopPropagation()
-                e.preventDefault()
-            })
-            document.body.addEventListener('click', function (e) {
+            document.documentElement.addEventListener(
+                'mousedown',
+                function (e) {
+                    console.log('html2')
+                    // e.stopPropagation()
+                    e.preventDefault()
+                }
+            )
+            document.documentElement.addEventListener(
+                'mousedown',
+                function (e) {
+                    console.log('html4')
+                    // e.stopPropagation()
+                    e.preventDefault()
+                }
+            )
+            document.body.addEventListener('mousedown', function (e) {
                 console.log('body2')
                 e.preventDefault()
             })
-            out.addEventListener('click', function (e) {
+            out.addEventListener('pointerdown', function (e) {
                 console.log('outer2')
                 e.preventDefault()
             })
 
+            out.addEventListener('pointerdown', function (e) {
+                console.log('outer3')
+                e.preventDefault()
+            })
+
             window.addEventListener(
-                'click',
+                'mousedown',
                 function (e) {
                     console.log('window1')
                 },
                 true
             )
             document.documentElement.addEventListener(
-                'click',
+                'mousedown',
                 function (e) {
                     console.log('html1')
                     // e.stopPropagation()
@@ -72,7 +87,7 @@
                 true
             )
             document.documentElement.addEventListener(
-                'click',
+                'mousedown',
                 function (e) {
                     console.log('html3')
                     // e.stopPropagation()
@@ -82,20 +97,22 @@
                 true
             )
             document.body.addEventListener(
-                'click',
+                'mousedown',
                 function (e) {
                     console.log('body1')
                 },
                 true
             )
 
-            inn.addEventListener('click', function (e) {
+            inn.addEventListener('mousedown', function (e) {
                 console.log('inner2')
                 e.preventDefault()
+                inn.focus ? inn.focus() : window.focus()
+                document.addEventListener('mousemove', mousemove)
                 // e.stopPropagation()
             })
             out.addEventListener(
-                'click',
+                'mousedown',
                 function (e) {
                     console.log('outer1')
                     // e.stopImmediatePropagation()
@@ -106,7 +123,7 @@
             )
 
             inn.addEventListener(
-                'click',
+                'mousedown',
                 function (e) {
                     console.log('inner1')
                     e.preventDefault()
@@ -116,13 +133,13 @@
                 false
             )
 
-            inn.addEventListener('click', function (e) {
+            inn.addEventListener('mousedown', function (e) {
                 console.log('inner4')
                 e.preventDefault()
             })
 
             inn.addEventListener(
-                'click',
+                'mousedown',
                 function (e) {
                     console.log('inner3')
                     e.preventDefault()

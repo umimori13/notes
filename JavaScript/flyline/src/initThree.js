@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { LineCurve3, Vector3 } from 'three'
+import { CurvePath, LineCurve3, Vector3 } from 'three'
 import FlyLine from './flyLine'
 
 let container
@@ -40,18 +40,40 @@ const initThree = () => {
         new Vector3(0, 0, 0),
         new Vector3(1.5, 1.5, 1.5)
     )
-    const line = new FlyLine(linecurve, {
+    const linecurve2 = new LineCurve3(
+        new Vector3(1.5, 1.5, 1.5),
+        new Vector3(3, 3, 3)
+    )
+    const curpath = new CurvePath()
+    curpath.add(linecurve)
+    curpath.add(linecurve2)
+    const line = new FlyLine(curpath, {
         color: 0xff00ff,
         segFlag: true,
-        segment: 3.5, //必须是小数
+        segment: 0.1, //必须是小数
     })
     console.log('line :>> ', line)
     scene.add(line)
 
+    // const line2 = new FlyLine(linecurve2, {
+    //     color: 0xff00ff,
+    //     segFlag: true,
+    //     segment: 3.5, //必须是小数
+    // })
+    // console.log('line :>> ', line)
+    // scene.add(line2)
+    let count = 0
+
     const render = (timestamp, frame) => {
         renderer.render(scene, camera)
 
-        line.update(0.01)
+        line.update(0.002)
+        // line2.update(0.01)
+        count++
+        line.mesh.geometry.setDrawRange(0, count)
+        if (count >= 500) {
+            count = 0
+        }
 
         cube.rotation.x += 0.01
         cube.rotation.y += 0.01
