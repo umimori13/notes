@@ -2,11 +2,14 @@ onmessage = function (event) {
     //向主线程发送event.data.name信息
     const pos = []
     const intensity = []
-    const data = event.data.data.split('\n').map((val) => {
+    const restData = event.data.data
+        .substr(2, event.data.data.length - 4)
+        .replace(/\s+/g, '')
+    restData.split('],[').forEach((val) => {
         const split = val.split(',')
         if (split.length < 4) return
         else {
-            pos.push(split[0], split[1], split[2])
+            pos.push(Number(split[0]), Number(split[1]), Number(split[2]))
             const a =
                 Math.min(255, parseInt(Math.round(split[3] * 1.1), 10)) / 255
             const b =

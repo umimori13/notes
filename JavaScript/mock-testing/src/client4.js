@@ -72,11 +72,12 @@ const clientGet = (url) => {
 
                 scene.remove(points)
                 points.geometry.dispose()
+                // points.dispose()
                 const mat = points.material
                 const newPoints = new Points(geometry, mat)
-                newPoints.position.set(6, 15, 0)
-                newPoints.rotation.set(0, -0.06, -3.02)
-                newPoints.scale.set(0.1, 0.1, 0.1)
+                // newPoints.position.set(6, 15, 0)
+                // newPoints.rotation.set(0, -0.06, -3.02)
+                // newPoints.scale.set(0.1, 0.1, 0.1)
                 state.points = newPoints
                 scene.add(newPoints)
             } else {
@@ -112,18 +113,18 @@ const clientGet = (url) => {
                 geometry.computeBoundingSphere()
 
                 const material = new PointsMaterial({
-                    size: 0.38,
+                    size: 0.11,
                     vertexColors: true,
                 })
 
                 const points = new Points(geometry, material)
-                points.position.set(6, 15, 0)
-                points.rotation.set(0, -0.06, -3.02)
-                points.scale.set(0.1, 0.1, 0.1)
+                // points.position.set(6, 15, 0)
+                // points.rotation.set(0, -0.06, -3.02)
+                // points.scale.set(0.1, 0.1, 0.1)
                 state.points = points
                 scene.add(points)
-                console.log('data :>> ', geometry)
-                console.log('data :>> ', points)
+                // console.log('data :>> ', geometry)
+                // console.log('data :>> ', points)
             }
         }
     }
@@ -135,16 +136,30 @@ const clientGet = (url) => {
     }
     let count = 0
     ws.onmessage = function (evt) {
+        // console.log('evt :>> ', evt)
         if (evt.data === 'Done!') {
             ws.close()
         } else {
             if (evt.data.length < 5) {
                 // console.log('frame :>> ', evt.data)
             } else {
+                // console.log('evt.data :>> ', evt.data)
+                // const a = evt.data
+                // console.log(
+                //     'a :>> ',
+                //     a
+                //         .substr(2, a.length - 4)
+                //         .replace(/\s+/g, '')
+                //         .split('],[')
+                //         .map((val) => {
+                //             return val.split(',').map((each) => Number(each))
+                //         })
+                // )
                 worker.postMessage({
                     data: evt.data,
                     id: count,
                 })
+                // ws.close()
             }
         }
 
@@ -257,6 +272,7 @@ const clientGet = (url) => {
     // }
 
     ws.onclose = function (evt) {
+        console.log('closed evt :>> ', evt)
         console.log('Connection closed.')
     }
     console.log('theClient :>> ', ws)
