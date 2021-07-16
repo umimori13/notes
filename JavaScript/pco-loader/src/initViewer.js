@@ -151,7 +151,8 @@ const initViewer = () => {
 
     const edlRenderer = new EdlRenderer(renderer, pointClouds)
 
-    const baseUrl = './pointcloud/'
+    // const baseUrl = './pointcloud/'
+    const baseUrl = 'https://staging02.stereye.tech/pointclouds/testpoint360/'
     potree
         .loadPointCloud(
             // The name of the point cloud which is to be loaded.
@@ -165,6 +166,7 @@ const initViewer = () => {
             pointClouds.push(pco)
             scenePC.add(pco) // Add the loaded point cloud to your ThreeJS scene.
 
+            console.log('pco :>> ', pco);
             // The point cloud comes with a material which can be customized directly.
             // Here we just set the size of the points.
 

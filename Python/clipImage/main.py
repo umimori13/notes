@@ -27,20 +27,20 @@ def divide_img(img_path, img_name, save_path):
   
 if __name__ == '__main__':
   
-  img_path = 'F:\\teamwork\\underground1116\\merge\\'
+  img_path = 'D:\\image\\'
   img_list = os.listdir(img_path)
 #   img_list= img_list[:3]
   print(img_list)
   for name in img_list:
-    newName = name[:-4]
+    newName = name[-7:-4]
 
-    first_path = 'F:\\teamwork\\resize\\hiRes\\'
+    first_path = 'D:\\hiRes\\'
     if os.path.isdir(first_path):  ##不用加引号，如果是多级目录，只判断最后一级目录是否存在
         pass
     else:
         os.mkdir(first_path)
 
-    save_path = 'F:\\teamwork\\resize\\hiRes\\'+newName+'\\'
+    save_path = 'D:\\hiRes\\'+newName+'\\'
     if os.path.isdir(save_path):  ##不用加引号，如果是多级目录，只判断最后一级目录是否存在
         pass
     else:

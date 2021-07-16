@@ -9,4 +9,4 @@ init()
 // const id = setInterval(() => {
 //     getData(id)
 // }, 50)
-clientGet('ws://10.19.127.59:5678')
+clientGet('ws://localhost:9090')
