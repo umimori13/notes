@@ -32,7 +32,7 @@
         "axios": "^0.21.0",
         "json-server": "^0.16.3",
         "mockjs": "^1.1.0",
-        "three": "^0.123.0",
+        "three": "^0.125.0",
         "websocket": "^1.0.33",
         "worker-loader": "^3.0.6",
         "ws": "^7.4.1"
