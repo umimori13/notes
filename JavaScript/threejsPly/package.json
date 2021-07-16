@@ -27,6 +27,6 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.10.5",
-        "three": "^0.119.1"
+        "three": "^0.125.0"
     }
 }
